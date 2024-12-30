@@ -37,14 +37,13 @@ pre-commit install --install-hooks
 
 You need to install the tools used for each hook and ensure they're in `$PATH`
 for the checks to work. The required tool and brief installation instructions,
-if any, is documented below beside each
-check.
+if any, is documented below beside each check.
 
 ## Workspaces
 
-I haven't used [cargo
-workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) so
-these hooks don't support them because I have no way to test the config. PRs
+I haven't used
+[cargo workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html)
+so these hooks don't support them because I have no way to test the config. PRs
 adding workspaces support are welcome.
 
 ## Hooks
@@ -67,10 +66,10 @@ installed by default with your Rust installation.
 
 ### cargo-llvm-cov
 
-Runs [cargo llvm-cov test](https://github.com/taiki-e/cargo-llvm-cov). Install with
-`cargo +stable install cargo-llvm-cov --locked` (see
-<https://github.com/taiki-e/cargo-llvm-cov?tab=readme-ov-file#from-source>).
-The default args passed are `--quiet` to reduce output; consider using
+Runs [cargo llvm-cov test](https://github.com/taiki-e/cargo-llvm-cov). Install
+with `cargo +stable install cargo-llvm-cov --locked` (see
+<https://github.com/taiki-e/cargo-llvm-cov?tab=readme-ov-file#from-source>). The
+default args passed are `--quiet` to reduce output; consider using
 `--fail-uncovered-lines=X` and `--fail-uncovered-functions=X` to require high
 test coverage.
 
