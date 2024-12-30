@@ -37,7 +37,7 @@ pre-commit install --install-hooks
 
 You need to install the tools used for each hook and ensure they're in `$PATH`
 for the checks to work. The required tool and brief installation instructions,
-if any, is documented below beside each check.
+if any, is documented below beside each hook.
 
 ## Workspaces
 
@@ -55,9 +55,14 @@ Runs [cargo check](https://doc.rust-lang.org/cargo/commands/cargo-check.html).
 
 ### cargo-clippy
 
-Runs [cargo clippy](https://doc.rust-lang.org/clippy/usage.html). Install with
-`rustup component add clippy`. The default args passed are `--deny warnings` to
-fail on warnings.
+Runs [cargo clippy](https://doc.rust-lang.org/clippy/usage.html). The default
+args passed are `--deny warnings` to fail on warnings.
+
+Install with:
+
+```shell
+rustup component add clippy
+```
 
 ### cargo-fmt
 
@@ -66,12 +71,17 @@ installed by default with your Rust installation.
 
 ### cargo-llvm-cov
 
-Runs [cargo llvm-cov test](https://github.com/taiki-e/cargo-llvm-cov). Install
-with `cargo +stable install cargo-llvm-cov --locked` (see
-<https://github.com/taiki-e/cargo-llvm-cov?tab=readme-ov-file#from-source>). The
+Runs [cargo llvm-cov test](https://github.com/taiki-e/cargo-llvm-cov). The
 default args passed are `--quiet` to reduce output; consider using
 `--fail-uncovered-lines=X` and `--fail-uncovered-functions=X` to require high
 test coverage.
+
+Install with (see
+<https://github.com/taiki-e/cargo-llvm-cov?tab=readme-ov-file#from-source>). :
+
+```shell
+cargo +stable install cargo-llvm-cov --locked
+```
 
 ### cargo-test
 
