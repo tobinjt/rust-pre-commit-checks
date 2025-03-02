@@ -88,9 +88,17 @@ Configure with:
 
 ```yaml
 repos:
-- repo: https://github.com/tobinjt/rust-pre-commit-checks
-  rev: v1.0.0 hooks:
-  - id: cargo-llvm-cov args: ['--fail-uncovered-lines=4', '--fail-uncovered-functions=1', '--quiet']
+  - repo: https://github.com/tobinjt/rust-pre-commit-checks
+    rev: v1.0.0
+    hooks:
+      - id: cargo-llvm-cov
+        args:
+          [
+            "--fail-uncovered-lines=5",
+            "--fail-uncovered-functions=1",
+            "--quiet",
+            "--show-missing-lines",
+          ]
 ```
 
 ### cargo-test
