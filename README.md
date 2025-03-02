@@ -17,9 +17,10 @@ Add a new repo entry in your configuration file:
 ```yaml
 repos:
   - repo: https://github.com/tobinjt/rust-pre-commit-checks
-    rev: <git sha or tag>
+    rev: v1.0.0
     hooks:
-      # See below for hook documentation, in particular dependencies.
+      # See below for hook documentation, in particular the binaries you need
+      # to install for each hook.
       - id: cargo-check
       - id: cargo-clippy
       - id: cargo-fmt
@@ -81,6 +82,15 @@ Install with (see
 
 ```shell
 cargo +stable install cargo-llvm-cov --locked
+```
+
+Configure with:
+
+```yaml
+repos:
+- repo: https://github.com/tobinjt/rust-pre-commit-checks
+  rev: v1.0.0 hooks:
+  - id: cargo-llvm-cov args: ['--fail-uncovered-lines=4', '--fail-uncovered-functions=1', '--quiet']
 ```
 
 ### cargo-test
