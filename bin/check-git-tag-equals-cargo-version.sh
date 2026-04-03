@@ -6,12 +6,6 @@
 set -e -f -u -o pipefail
 
 main() {
-  if [[ "$#" -ne 0 ]]; then
-    echo "Unexpected arguments: $*" >&2
-    echo "Usage: $0 < GIT_TAG_INFO" >&2
-    return 1
-  fi
-
   local cargo_version
   cargo_version="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -n 1)"
 
