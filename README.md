@@ -26,12 +26,19 @@ repos:
       - id: cargo-fmt
       - id: cargo-llvm-cov
       - id: cargo-test
+      - id: check-tag-version
 ```
 
 Install the `pre-commit` script:
 
 ```console
 pre-commit install --install-hooks
+```
+
+If you're using `check-tag-version` you'll also need to run:
+
+```console
+pre-commit install --hook-type pre-push
 ```
 
 ## Dependencies
@@ -105,6 +112,17 @@ repos:
 
 Runs [cargo test](https://doc.rust-lang.org/cargo/commands/cargo-test.html).
 `cargo test` should be installed by default with your Rust installation.
+
+### check-tag-version
+
+This runs on *push*, not on *commit*. If a Git tag is being pushed, and it
+doesn't match the `version` in `Cargo.toml`, this check will fail. The intent is
+to prevent mismatches between the two, because you generally want them to be in
+sync.
+
+You might want to consider using <https://github.com/crate-ci/cargo-release> to
+streamline the release process, but johntobin doesn't have any experience with
+that tooling.
 
 ## License
 

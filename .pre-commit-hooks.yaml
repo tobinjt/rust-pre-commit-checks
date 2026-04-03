@@ -32,4 +32,11 @@
   entry: cargo test
   args: []
   pass_filenames: false
+- id: check-tag-version
+  name: Check Tag vs Cargo.toml
+  description: Verifies that the git tag being pushed matches the version in Cargo.toml.
+  entry: bin/check-git-tag-equals-cargo-version.sh
+  language: script
+  stages: [pre-push]
+  always_run: true
 # keep-sorted end
