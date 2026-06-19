@@ -2,17 +2,34 @@
 
 Rust checks for <http://pre-commit.com/>
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Usage](#usage)
+- [Dependencies](#dependencies)
+- [Workspaces](#workspaces)
+- [Hooks](#hooks)
+  - [cargo-check](#cargo-check)
+  - [cargo-clippy](#cargo-clippy)
+  - [cargo-fmt](#cargo-fmt)
+  - [cargo-llvm-cov](#cargo-llvm-cov)
+  - [cargo-test](#cargo-test)
+  - [check-tag-version](#check-tag-version)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Usage
 
 Make sure `pre-commit` is [installed](https://pre-commit.com#install).
 
-Create a blank configuration file at the root of your repo, if needed:
+Create a blank configuration file at the root of your repository, if needed:
 
 ```console
 touch .pre-commit-config.yaml
 ```
 
-Add a new repo entry in your configuration file:
+Add a new `repo` entry in your configuration file:
 
 ```yaml
 repos:
@@ -64,7 +81,7 @@ Runs [cargo check](https://doc.rust-lang.org/cargo/commands/cargo-check.html).
 ### cargo-clippy
 
 Runs [cargo clippy](https://doc.rust-lang.org/clippy/usage.html). The default
-args passed are `--deny warnings` to fail on warnings.
+`args` passed are `--deny warnings` to fail on warnings.
 
 Install with:
 
@@ -80,7 +97,7 @@ installed by default with your Rust installation.
 ### cargo-llvm-cov
 
 Runs [cargo llvm-cov test](https://github.com/taiki-e/cargo-llvm-cov). The
-default args passed are `--quiet` to reduce output; consider using
+default `args` passed are `--quiet` to reduce output; consider using
 `--fail-uncovered-lines=X` and `--fail-uncovered-functions=X` to require high
 test coverage.
 
@@ -99,13 +116,8 @@ repos:
     rev: v1.0.0
     hooks:
       - id: cargo-llvm-cov
-        args:
-          [
-            "--fail-uncovered-lines=5",
-            "--fail-uncovered-functions=1",
-            "--quiet",
-            "--show-missing-lines",
-          ]
+        args: [--fail-uncovered-lines=5, --fail-uncovered-functions=1, --quiet, 
+              --show-missing-lines]
 ```
 
 ### cargo-test
@@ -116,12 +128,12 @@ Runs [cargo test](https://doc.rust-lang.org/cargo/commands/cargo-test.html).
 ### check-tag-version
 
 This runs on *push*, not on *commit*. If a Git tag is being pushed, and it
-doesn't match the `version` in `Cargo.toml`, this check will fail. The intent is
-to prevent mismatches between the two, because you generally want them to be in
+doesn't match the `version` in `Cargo.toml`, this check fails. The intent is to
+prevent mismatches between the two, because you generally want them to be in
 sync.
 
 You might want to consider using <https://github.com/crate-ci/cargo-release> to
-streamline the release process, but johntobin doesn't have any experience with
+streamline the release process, but the author doesn't have any experience with
 that tooling.
 
 ## License
