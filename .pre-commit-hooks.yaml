@@ -18,6 +18,7 @@
   types_or: [cargo, cargo-lock, rust]
   entry: cargo fmt
   args: ["--"]
+  pass_filenames: false
 - id: cargo-llvm-cov
   name: Run `cargo llvm-cov`
   language: system
